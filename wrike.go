@@ -11,7 +11,7 @@ const Host string = "https://www.wrike.com/api/v4"
 
 type Wrike struct {
 	bearer     string
-	HttpClient *http.Client
+	httpClient *http.Client
 }
 
 // Wrike 구조체 생성자
@@ -27,7 +27,7 @@ func NewWrike(bearer string, httpClient *http.Client) *Wrike {
 
 	return &Wrike{
 		bearer:     bearer,
-		HttpClient: httpClient,
+		httpClient: httpClient,
 	}
 }
 
@@ -46,7 +46,7 @@ func (w *Wrike) newAPI(uri string, urlQuery map[string]string, target interface{
 		req.URL.RawQuery = q.Encode()
 	}
 
-	resp, err := w.HttpClient.Do(req)
+	resp, err := w.httpClient.Do(req)
 	errorHandler(err)
 
 	defer resp.Body.Close()
