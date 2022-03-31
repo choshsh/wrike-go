@@ -58,9 +58,9 @@ func (w *Wrike) Tasks() Tasks {
 }
 
 // 특정 프로젝트의 작업 조회
-func (w *Wrike) TasksInProject(folerId string, withAttachments bool) Tasks {
+func (w *Wrike) TasksInProject(folderId string, withAttachments bool) Tasks {
 	tasks := Tasks{}
-	w.newAPI("/folders/"+folerId+"/tasks", nil, &tasks)
+	w.newAPI("/folders/"+folderId+"/tasks", nil, &tasks)
 
 	// 첨부파일 추가 조회
 	if withAttachments {

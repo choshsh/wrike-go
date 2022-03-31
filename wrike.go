@@ -14,7 +14,7 @@ type Wrike struct {
 	httpClient *http.Client
 }
 
-// Wrike 구조체 생성자
+// Wrike 생성자
 func NewWrike(bearer string, httpClient *http.Client) *Wrike {
 	if len(bearer) == 0 {
 		log.Fatal("Wrike Token missing.")

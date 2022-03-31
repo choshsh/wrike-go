@@ -46,7 +46,10 @@ func (w *Wrike) ProjectsByLink(link string, urlQuery map[string]string) Projects
 			"deleted": "false",
 		}
 	}
-	urlQuery["permalink"] = link
+	if len(link) > 0 {
+		urlQuery["permalink"] = link
+	}
+	
 	projects := Projects{}
 	w.newAPI("/folders", urlQuery, &projects)
 
